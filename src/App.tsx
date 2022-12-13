@@ -71,10 +71,10 @@ function App() {
 	};
 
 	return (
-		<main className="h-screen flex flex-col text-neutral-cool-gray ">
+		<main className="h-screen flex flex-col text-neutral-cool-gray w-full lg:mx-auto lg:max-w-[58.75rem] lg:mt-20 lg:flex-row grow lg:p-4 lg:rounded-lg lg:bg-white lg:h-[33.75rem] lg:shadow">
 			<Sidebar currentStep={step} setStep={setStep} />
-			<div className="px-4 relative bg-neutral-magnolia ">
-				<form className="bg-neutral-alabaster px-6 py-9 rounded-[0.625rem] -translate-y-[4.5rem] flex w-full [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-primary-marine-blue [&_h3]:font-medium [&_h3]:text-primary-marine-blue">
+			<div className="px-4 relative bg-neutral-magnolia  lg:bg-transparent lg:flex lg:flex-col lg:w-full ">
+				<form className="bg-neutral-alabaster px-6 py-9 rounded-[0.625rem] -translate-y-[4.5rem] flex w-full grow [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-primary-marine-blue [&_h3]:font-medium [&_h3]:text-primary-marine-blue lg:bg-transparent lg:translate-y-0 ">
 					{step === 1 && (
 						<PersonalInfo
 							userInfo={userServiceConfiguration.userInfo}
@@ -103,21 +103,21 @@ function App() {
 					)}
 					{step === 5 && <ThankYou />}
 				</form>
+				{step < 5 && (
+					<menu className="flex justify-between p-4 mt-auto">
+						<li>
+							<Button type="ghost" onClick={goBack}>
+								Go Back
+							</Button>
+						</li>
+						<li>
+							<Button onClick={nextStep}>
+								{step !== 4 ? 'Next Step' : 'Confirm'}
+							</Button>
+						</li>
+					</menu>
+				)}
 			</div>
-			{step < 5 && (
-				<menu className="flex justify-between p-4">
-					<li>
-						<Button type="ghost" onClick={goBack}>
-							Go Back
-						</Button>
-					</li>
-					<li>
-						<Button onClick={nextStep}>
-							{step !== 4 ? 'Next Step' : 'Confirm'}
-						</Button>
-					</li>
-				</menu>
-			)}
 		</main>
 	);
 }

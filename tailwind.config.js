@@ -20,7 +20,8 @@ module.exports = {
 				'neutral-alabaster': '#fafbff'
 			},
 			backgroundImage: {
-				'sidebar-image-mobile': "url('../public/assets/images/bg-sidebar-mobile.svg')"
+				'sidebar-image-mobile': "url('../public/assets/images/bg-sidebar-mobile.svg')",
+				'sidebar-image-desktop': "url('../public/assets/images/bg-sidebar-desktop.svg')"
 			}
 		},
 	},

@@ -3,7 +3,8 @@ import { Card } from './card';
 import clsx from 'clsx';
 import { calculatePrice } from '../utils/calculatePrice';
 
-const activeClasses = 'border-primary-purplish-blue bg-neutral-magnolia';
+const activeClasses =
+	'border border-primary-purplish-blue bg-neutral-magnolia falopa';
 
 const plans: Plan[] = [
 	{
@@ -48,7 +49,7 @@ export const SelectPlan = ({
 								'p-4 flex gap-4 transition-all w-full lg:flex-col lg:gap-8 hover:border-primary-purplish-blue hover:bg-neutral-magnolia cursor-pointer',
 								plan.name === selectedPlan?.name
 									? activeClasses
-									: ''
+									: 'border border-neutral-light-gray'
 							)}
 							onClick={() => updateSelectedPlan(plan)}
 						>

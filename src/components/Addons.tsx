@@ -3,7 +3,7 @@ import { calculatePrice } from '../utils/calculatePrice';
 import { Card } from './card';
 import clsx from 'clsx';
 
-const activeClasses = 'border-primary-purplish-blue bg-neutral-magnolia';
+const activeClasses = 'border border-primary-purplish-blue bg-neutral-magnolia';
 
 const addons: Addon[] = [
 	{
@@ -42,7 +42,9 @@ export const Addons = ({
 				<Card
 					className={clsx(
 						`p-4 flex gap-4 transition-all relative w-full hover:border-primary-purplish-blue hover:bg-neutral-magnolia cursor-pointer`,
-						selectedAddons.includes(addon) ? activeClasses : ''
+						selectedAddons.includes(addon)
+							? activeClasses
+							: 'border border-neutral-light-gray'
 					)}
 					onClick={() => updateAddons(addon)}
 					key={addon.name}

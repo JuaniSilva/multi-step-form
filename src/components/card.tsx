@@ -6,10 +6,7 @@ interface CardProps {
 
 export const Card = ({ children, className, onClick }: CardProps) => {
 	return (
-		<div
-			className={`${className} border border-neutral-light-gray rounded-xl`}
-			onClick={onClick}
-		>
+		<div className={`${className}  rounded-xl`} onClick={onClick}>
 			{children}
 		</div>
 	);

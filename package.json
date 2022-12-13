@@ -1,5 +1,6 @@
 {
 	"name": "my-app",
+	"homepage": "http://juanisilva.github.io/multi-step-form",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
@@ -19,6 +20,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
@@ -45,6 +47,5 @@
 		"gh-pages": "^4.0.0",
 		"postcss": "^8.4.19",
 		"tailwindcss": "^3.2.4"
-	},
-	"homepage": "http://juanisilva.github.io/multi-step-form"
+	}
 }

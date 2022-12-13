@@ -41,7 +41,10 @@ export const PersonalInfo = ({
 				label="Email Address"
 				type="email"
 				placeholder="e.g. stephenking@lorem.com"
-				showRequired={showRequired && !userInfo.email}
+				showRequired={
+					showRequired &&
+					(!userInfo.email || !userInfo.email.includes('@'))
+				}
 				value={userInfo.email}
 				onChange={(e: FormEvent<HTMLInputElement>) =>
 					handlePersonalInfo(e, 'email')

@@ -61,20 +61,23 @@ function App() {
 		}
 	};
 
-	const nextStep = () => {
+	const nextStep = (onGoingStep?: number) => {
 		if (step === 5) return;
-		if (step === 1) {
+		if (step === 1 || (onGoingStep && onGoingStep !== 1 && step === 1)) {
 			if (
 				!userServiceConfiguration.userInfo.name ||
 				!userServiceConfiguration.userInfo.email ||
-				userServiceConfiguration.userInfo.email.includes('@') ||
+				!userServiceConfiguration.userInfo.email.includes('@') ||
 				!userServiceConfiguration.userInfo.phone
 			) {
 				setShowRequiredFields(true);
 				return;
 			}
 		}
-		setStep((step) => step + 1);
+		setStep((step) => {
+			if (onGoingStep) return onGoingStep;
+			return step + 1;
+		});
 	};
 
 	const goBack = () => {
@@ -84,7 +87,7 @@ function App() {
 
 	return (
 		<main className="h-screen flex flex-col text-neutral-cool-gray w-full lg:mx-auto lg:max-w-[58.75rem] lg:mt-20 lg:flex-row grow lg:p-4 lg:rounded-lg lg:bg-white lg:h-[33.75rem] lg:shadow">
-			<Sidebar currentStep={step} setStep={setStep} />
+			<Sidebar currentStep={step} handleNextStep={nextStep} />
 			<div className="px-4 relative bg-neutral-magnolia  lg:bg-transparent lg:flex lg:flex-col lg:w-full ">
 				<form className="bg-neutral-alabaster px-6 py-9 rounded-[0.625rem] -translate-y-[4.5rem] flex w-full grow [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-primary-marine-blue [&_h3]:font-medium [&_h3]:text-primary-marine-blue lg:bg-transparent lg:translate-y-0 ">
 					{step === 1 && (

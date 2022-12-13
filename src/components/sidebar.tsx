@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 interface SidebarProps {
 	currentStep: number;
-	setStep: (step: number) => void;
+	handleNextStep: (step: number) => void;
 }
 const steps = [
 	{
@@ -22,7 +22,7 @@ const steps = [
 		title: 'Summary',
 	},
 ];
-export const Sidebar = ({ currentStep, setStep }: SidebarProps) => {
+export const Sidebar = ({ currentStep, handleNextStep }: SidebarProps) => {
 	return (
 		<aside className="bg-sidebar-image-mobile min-h-[172px] bg-cover bg-no-repeat lg:rounded-lg lg:bg-sidebar-image-desktop">
 			<nav>
@@ -39,7 +39,7 @@ export const Sidebar = ({ currentStep, setStep }: SidebarProps) => {
 										? 'bg-primary-light-blue text-primary-marine-blue border-primary-light-blue'
 										: 'text-white'
 								)}
-								onClick={() => setStep(step.step)}
+								onClick={() => handleNextStep(step.step)}
 							>
 								{step.step}
 							</button>

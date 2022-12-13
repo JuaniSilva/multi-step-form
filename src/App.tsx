@@ -10,6 +10,7 @@ import { ThankYou } from './components/thankYou';
 
 function App() {
 	const [step, setStep] = useState(1);
+	const [showRequired, setShowRequiredFields] = useState(false);
 
 	const [userServiceConfiguration, setUserServiceConfiguration] =
 		useState<UserServiceConfiguration>({
@@ -62,6 +63,17 @@ function App() {
 
 	const nextStep = () => {
 		if (step === 5) return;
+		if (step === 1) {
+			if (
+				!userServiceConfiguration.userInfo.name ||
+				!userServiceConfiguration.userInfo.email ||
+				userServiceConfiguration.userInfo.email.includes('@') ||
+				!userServiceConfiguration.userInfo.phone
+			) {
+				setShowRequiredFields(true);
+				return;
+			}
+		}
 		setStep((step) => step + 1);
 	};
 
@@ -79,6 +91,7 @@ function App() {
 						<PersonalInfo
 							userInfo={userServiceConfiguration.userInfo}
 							updateUserInfo={updateUserInfo}
+							showRequired={showRequired}
 						/>
 					)}
 					{step === 2 && (

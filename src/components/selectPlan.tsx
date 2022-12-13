@@ -62,7 +62,10 @@ export const SelectPlan = ({
 								<h3 className="leading-5">{plan.name}</h3>
 								<p>
 									$
-									{calculatePrice(plan.monthlyPrice, monthly)}
+									{calculatePrice(
+										plan.monthlyPrice,
+										monthly
+									).toLocaleString()}
 									/{monthly ? 'mo' : 'yr'}
 								</p>
 

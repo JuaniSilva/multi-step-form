@@ -5,11 +5,13 @@ import { UserInfo } from 'AppTypes';
 interface PersonalInfoProps {
 	userInfo: UserInfo;
 	updateUserInfo: (userInfo: UserInfo) => void;
+	showRequired: boolean;
 }
 
 export const PersonalInfo = ({
 	userInfo,
 	updateUserInfo,
+	showRequired,
 }: PersonalInfoProps) => {
 	const handlePersonalInfo = (
 		event: FormEvent<HTMLInputElement>,
@@ -19,6 +21,7 @@ export const PersonalInfo = ({
 		updatedUserInfo[key] = event.currentTarget.value;
 		updateUserInfo(updatedUserInfo);
 	};
+
 	return (
 		<section className="flex flex-col gap-4 w-full">
 			<h2>Personal info</h2>
@@ -27,6 +30,7 @@ export const PersonalInfo = ({
 			<Input
 				label="Name"
 				placeholder="e.g. Stephen King"
+				showRequired={showRequired && !userInfo.name}
 				value={userInfo.name}
 				onChange={(e: FormEvent<HTMLInputElement>) =>
 					handlePersonalInfo(e, 'name')
@@ -37,6 +41,7 @@ export const PersonalInfo = ({
 				label="Email Address"
 				type="email"
 				placeholder="e.g. stephenking@lorem.com"
+				showRequired={showRequired && !userInfo.email}
 				value={userInfo.email}
 				onChange={(e: FormEvent<HTMLInputElement>) =>
 					handlePersonalInfo(e, 'email')
@@ -46,6 +51,7 @@ export const PersonalInfo = ({
 			<Input
 				label="Phone Number"
 				placeholder="e.g. +1 234 567 890"
+				showRequired={showRequired && !userInfo.phone}
 				value={userInfo.phone}
 				onChange={(e: FormEvent<HTMLInputElement>) =>
 					handlePersonalInfo(e, 'phone')

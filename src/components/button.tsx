@@ -17,10 +17,10 @@ export const Button = ({
 }: ButtonProps) => {
 	const typeClasses =
 		type === 'primary'
-			? 'bg-primary-purplish-blue text-white'
+			? 'bg-primary-purplish-blue text-white hover:opacity-70'
 			: type === 'secondary'
-			? 'bg-primary-marine-blue text-white'
-			: 'bg-transparent text-neutral-cool-gray';
+			? 'bg-primary-marine-blue text-white hover:opacity-70'
+			: 'bg-transparent text-neutral-cool-gray ';
 	const sizeClasses =
 		size === 'sm'
 			? 'text-sm p-0'

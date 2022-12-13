@@ -41,15 +41,16 @@ export const Addons = ({
 			{addons.map((addon) => (
 				<Card
 					className={clsx(
-						`p-4 flex gap-4 transition-all relative w-full`,
+						`p-4 flex gap-4 transition-all relative w-full hover:border-primary-purplish-blue hover:bg-neutral-magnolia cursor-pointer`,
 						selectedAddons.includes(addon) ? activeClasses : ''
 					)}
 					onClick={() => updateAddons(addon)}
+					key={addon.name}
 				>
 					<input
 						type="checkbox"
 						checked={selectedAddons.includes(addon)}
-						className="w-5 h-5 aspect-square rounded-sm self-center checked:accent-primary-purplish-blue"
+						className="w-5 h-5 aspect-square rounded-sm self-center checked:accent-primary-purplish-blue "
 						onChange={() => updateAddons(addon)}
 					/>
 					<div>
@@ -57,7 +58,11 @@ export const Addons = ({
 						<p>{addon.description}</p>
 					</div>
 					<span className="w-min ml-auto self-center">
-						${calculatePrice(addon.monthlyPrice, monthly)}
+						$
+						{calculatePrice(
+							addon.monthlyPrice,
+							monthly
+						).toLocaleString()}
 						{monthly ? 'mo' : 'yr'}
 					</span>
 				</Card>

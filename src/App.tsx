@@ -127,7 +127,10 @@ function App() {
 							</Button>
 						</li>
 						<li>
-							<Button onClick={() => nextStep()}>
+							<Button
+								onClick={() => nextStep()}
+								type={step !== 4 ? 'secondary' : 'primary'}
+							>
 								{step !== 4 ? 'Next Step' : 'Confirm'}
 							</Button>
 						</li>
